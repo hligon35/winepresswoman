@@ -25,14 +25,28 @@ export function SiteHeader() {
           <span>Winepress Woman</span>
         </Link>
 
-        <nav aria-label="Primary" className="hidden items-center gap-5 md:flex">
+        <nav aria-label="Primary" className="hidden flex-1 items-center justify-evenly md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm text-muted hover:text-foreground"
+              className="px-2 py-1 text-center text-sm leading-tight text-muted hover:text-foreground"
             >
-              {link.label}
+              {link.label.split(" ").length > 1 ? (
+                (() => {
+                  const parts = link.label.split(" ");
+                  const firstLine = parts.slice(0, -1).join(" ");
+                  const secondLine = parts[parts.length - 1];
+                  return (
+                    <>
+                      <span className="block">{firstLine}</span>
+                      <span className="block">{secondLine}</span>
+                    </>
+                  );
+                })()
+              ) : (
+                link.label
+              )}
             </Link>
           ))}
         </nav>
@@ -42,7 +56,7 @@ export function SiteHeader() {
             href={links.amazonBook}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-10 items-center justify-center rounded-full bg-brand px-4 text-sm font-medium text-surface hover:opacity-90"
+            className="inline-flex h-10 items-center justify-center whitespace-nowrap rounded-full bg-brand px-4 text-sm font-medium text-surface hover:opacity-90"
           >
             Get the Book
           </a>
