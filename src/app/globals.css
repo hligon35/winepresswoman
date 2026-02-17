@@ -1,13 +1,31 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Logo-derived palette (WineWoman.jpg):
+     - Cream: #f8e6c0 / #fbecc8
+     - Wine:  #673130
+     - Gold:  #877954
+     - Soft:  #c8c299
+  */
+  --background: #fbecc8;
+  --foreground: #2b1b1a;
+
+  --surface: #ffffff;
+  --muted: #5b4a48;
+  --border: #d8d2ad;
+
+  --brand: #673130;
+  --accent: #877954;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-brand: var(--brand);
+  --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -16,11 +34,17 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --surface: #111111;
+    --muted: #cfcfcf;
+    --border: #2a2a2a;
+    --brand: #673130;
+    --accent: #877954;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
 }
+
